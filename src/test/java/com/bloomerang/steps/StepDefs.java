@@ -30,9 +30,8 @@ public class StepDefs {
     }
 
     @Then("User should see {string}")
-    public void user_should_see(String string) {
-        String actualResult = "Thank you for volunteering!";
-        String expectedResult = submitPage.getMessageElm().getText();
+    public void user_should_see(String expectedResult) {
+        String actualResult = submitPage.getMessageElm().getText();
 
         Assert.assertEquals(expectedResult, actualResult);
 
@@ -43,20 +42,16 @@ public class StepDefs {
         submitPage.fillingInformationWithMissingFields();
     }
 
-    @Then("The form should not be submitted")
-    public void theFormShouldNotBeSubmitted() {
-        String expectedResult = submitPage.getLastNameFieldRequiredElm().getText();
-        String actualResult = "This field is required.";
+
+    @When("User fills every field with partial valid information")
+    public void userFillsEveryFieldWithPartialValidInformation() {
+        submitPage.fillingPartialInformationFields();
+
+    }
+
+    @Then("The form should not be submitted and display {string}")
+    public void theFormShouldNotBeSubmittedAndDisplay(String expectedResult) {
+        String actualResult = submitPage.getLastNameFieldRequiredElm().getText();
         Assert.assertEquals(expectedResult, actualResult);
-    }
-
-    @And("User does not click the submit button")
-    public void userDoesNotClickTheSubmitButton() {
-        submitPage.submitBtnNotClicked();
-    }
-
-    @Then("User should not be able to see the {string}")
-    public void userShouldNotBeAbleToSeeThe(String arg0) {
-        Assert.assertTrue(submitPage.getMessageElm2().size() == 0);
     }
 }

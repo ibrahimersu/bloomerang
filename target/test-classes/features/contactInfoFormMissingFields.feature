@@ -7,4 +7,4 @@ Feature: User submit to the landing page
     Given The user is on the landing page to fill form
     When User does not fill every field int the form
     And User clicks submit button
-    Then The form should not be submitted
+    Then The form should not be submitted and display "This field is required."

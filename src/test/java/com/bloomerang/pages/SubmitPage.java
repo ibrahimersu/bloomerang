@@ -58,21 +58,20 @@ public class SubmitPage {
 
     public void fillingInformationFields() {
 
-        Faker faker = new Faker();
         Select select1 = new Select(countryElm);
         Select select2 = new Select(stateElm);
 
-        firstNameElm.sendKeys(faker.name().firstName());
-        lastNameElm.sendKeys(faker.name().lastName());
-        emailElm.sendKeys(faker.internet().emailAddress());
-        phoneElm.sendKeys(faker.phoneNumber().cellPhone());
+        firstNameElm.sendKeys("John");
+        lastNameElm.sendKeys("Doe");
+        emailElm.sendKeys("john_doe@gmail.com");
+        phoneElm.sendKeys("6776065060");
         select1.selectByValue("US");
-        addressElm.sendKeys(faker.address().fullAddress());
-        cityElm.sendKeys(faker.address().city());
+        addressElm.sendKeys("21 Jump Street");
+        cityElm.sendKeys("Metropolis, Evergreen");
         select2.selectByValue("NY");
-        zipcodeElm.sendKeys(faker.address().zipCode());
+        zipcodeElm.sendKeys("10036");
         volunteerDateElm.sendKeys("02/06/2022");
-        commentElm.sendKeys(faker.chuckNorris().fact());
+        commentElm.sendKeys("Sharing is caring. Caring is sharing. Let's give back to community");
 
     }
 
@@ -86,20 +85,10 @@ public class SubmitPage {
 
     public void fillingInformationWithMissingFields() {
 
-        Faker faker = new Faker();
-        Select select1 = new Select(countryElm);
-        Select select2 = new Select(stateElm);
+        firstNameElm.sendKeys("Jane");
+        lastNameElm.sendKeys("Doe");
+        emailElm.sendKeys("jane_doe@gmail.com");
 
-        firstNameElm.sendKeys(faker.name().firstName());
-        emailElm.sendKeys(faker.internet().emailAddress());
-        phoneElm.sendKeys(faker.phoneNumber().cellPhone());
-        select1.selectByValue("US");
-        addressElm.sendKeys(faker.address().fullAddress());
-        cityElm.sendKeys(faker.address().city());
-        select2.selectByValue("NY");
-        zipcodeElm.sendKeys(faker.address().zipCode());
-        volunteerDateElm.sendKeys("02/06/2022");
-        commentElm.sendKeys(faker.chuckNorris().fact());
 
     }
 
@@ -107,12 +96,13 @@ public class SubmitPage {
         return lastNameFieldRequiredElm;
     }
 
-    public void submitBtnNotClicked() {
-        submitBtnElm.isEnabled();
-    }
 
-    public List<WebElement> getMessageElm2() {
-        return messageElm2;
+    public void fillingPartialInformationFields() {
+        firstNameElm.sendKeys("Jane");
+        lastNameElm.sendKeys("Doe");
+        emailElm.sendKeys("jane_doe@gmail.com");
+        volunteerDateElm.sendKeys("03/06/2022");
+
     }
 }
 
